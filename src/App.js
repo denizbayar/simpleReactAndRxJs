@@ -9,17 +9,15 @@ const getPokemonByName = async name=>{
 
 let searchSubject = new BehaviorSubject("");
 
-//Bulbasour
 
 let searchResultObservable = searchSubject.pipe(
   filter(val=>val.length>1),
   debounceTime(750),
   distinctUntilChanged(),
 
-  // mergeMap(val=> from(getPokemonByName(val)) )
+   mergeMap(val=> from(getPokemonByName(val)) )
 )
 
-// 750 ms Bulbosour
 
 searchResultObservable.subscribe()
 
